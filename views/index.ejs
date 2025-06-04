@@ -11,7 +11,7 @@
     <h1>Café El Mejor</h1>
     <div>
       <% if (user) { %>
-        Bienvenido, <%= user.nombre %> | <a href="/logout">Cerrar Sesión</a> | Carrito: <%= carrito.length %>
+        Bienvenido, <%= user.nombre %> | <a href="/logout">Cerrar Sesión</a> | <a href="/carrito">Carrito (<%= carrito.length %>)</a>
       <% } else { %>
         <a href="/login">Iniciar Sesión</a> | <a href="/register">Registrarse</a>
       <% } %>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tu Carrito - Café El Mejor</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h2>Tu Carrito</h2>
+  <% if (carrito.length === 0) { %>
+    <p>El carrito está vacío.</p>
+  <% } else { %>
+    <ul>
+      <% let total = 0; %>
+      <% carrito.forEach(p => { %>
+        <li><strong><%= p.nombre %></strong> - $<%= p.precio %></li>
+        <% total += p.precio; %>
+      <% }) %>
+    </ul>
+    <p>Total: $<%= total %></p>
+    <form action="/comprar" method="post">
+      <button type="submit">Confirmar Compra</button>
+    </form>
+  <% } %>
+  <p><a href="/">Seguir comprando</a></p>
+</body>
+</html>
