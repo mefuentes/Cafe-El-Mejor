@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Café El Mejor</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Café El Mejor</h1>
+    <div>
+      <% if (user) { %>
+        Bienvenido, <%= user.nombre %> | <a href="/logout">Cerrar Sesión</a> | Carrito: <%= carrito.length %>
+      <% } else { %>
+        <a href="/login">Iniciar Sesión</a> | <a href="/register">Registrarse</a>
+      <% } %>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h2>Descubrí el sabor del mejor café artesanal</h2>
+    <p>Compra desde la comodidad de tu casa. Envíos a todo el país.</p>
+  </section>
+
+  <main class="productos">
+    <% productos.forEach(p => { %>
+      <div class="producto">
+        <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
+        <h3><%= p.nombre %></h3>
+        <p><%= p.descripcion %></p>
+        <strong>$<%= p.precio %></strong>
+        <% if (user) { %>
+        <form action="/agregar" method="post">
+          <input type="hidden" name="id" value="<%= p.id %>">
+          <button type="submit">Agregar al Carrito</button>
+        </form>
+        <% } else { %>
+          <p><em>Inicia sesión para comprar</em></p>
+        <% } %>
+      </div>
+    <% }) %>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Café El Mejor</p>
+  </footer>
+</body>
+</html>
